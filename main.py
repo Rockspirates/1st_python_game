@@ -8,17 +8,17 @@ Health = 10
 win = pygame.display.set_mode((screenwidth,screenheight))
 pygame.display.set_caption("First game")
 
-walkRight = [pygame.image.load('R1.png'), pygame.image.load('R2.png'), pygame.image.load('R3.png'), pygame.image.load('R4.png'), pygame.image.load('R5.png'), pygame.image.load('R6.png'), pygame.image.load('R7.png'), pygame.image.load('R8.png'), pygame.image.load('R9.png')]
-walkLeft = [pygame.image.load('L1.png'), pygame.image.load('L2.png'), pygame.image.load('L3.png'), pygame.image.load('L4.png'), pygame.image.load('L5.png'), pygame.image.load('L6.png'), pygame.image.load('L7.png'), pygame.image.load('L8.png'), pygame.image.load('L9.png')]
-bg = pygame.image.load('bg.jpg')
-char = pygame.image.load('standing.png')
+walkRight = [pygame.image.load('images/R1.png'), pygame.image.load('images/R2.png'), pygame.image.load('images/R3.png'), pygame.image.load('images/R4.png'), pygame.image.load('images/R5.png'), pygame.image.load('images/R6.png'), pygame.image.load('images/R7.png'), pygame.image.load('images/R8.png'), pygame.image.load('images/R9.png')]
+walkLeft = [pygame.image.load('images/L1.png'), pygame.image.load('images/L2.png'), pygame.image.load('images/L3.png'), pygame.image.load('images/L4.png'), pygame.image.load('images/L5.png'), pygame.image.load('images/L6.png'), pygame.image.load('images/L7.png'), pygame.image.load('images/L8.png'), pygame.image.load('images/L9.png')]
+bg = pygame.image.load('images/bg.jpg')
+char = pygame.image.load('images/standing.png')
 
 clock = pygame.time.Clock()
 clock2 = pygame.time.Clock()
-bulletsound = pygame.mixer.Sound('bullet.mp3')
-hitsound = pygame.mixer.Sound('hit.mp3')
+bulletsound = pygame.mixer.Sound('music/bullet.mp3')
+hitsound = pygame.mixer.Sound('music/hit.mp3')
 
-music = pygame.mixer.music.load('music.mp3')
+music = pygame.mixer.music.load('music/music.mp3')
 pygame.mixer.music.play(-1)
 
 class player(object):
@@ -88,8 +88,8 @@ class projectile(object):
         pygame.draw.circle(win, self.color, (self.x,self.y), self.radius)
 
 class enemy(object):
-    walkRight = [pygame.image.load('R1E.png'), pygame.image.load('R2E.png'), pygame.image.load('R3E.png'), pygame.image.load('R4E.png'), pygame.image.load('R5E.png'), pygame.image.load('R6E.png'), pygame.image.load('R7E.png'), pygame.image.load('R8E.png'), pygame.image.load('R9E.png'), pygame.image.load('R10E.png'), pygame.image.load('R11E.png')]
-    walkLeft = [pygame.image.load('L1E.png'), pygame.image.load('L2E.png'), pygame.image.load('L3E.png'), pygame.image.load('L4E.png'), pygame.image.load('L5E.png'), pygame.image.load('L6E.png'), pygame.image.load('L7E.png'), pygame.image.load('L8E.png'), pygame.image.load('L9E.png'), pygame.image.load('L10E.png'), pygame.image.load('L11E.png')]
+    walkRight = [pygame.image.load('images/R1E.png'), pygame.image.load('images/R2E.png'), pygame.image.load('images/R3E.png'), pygame.image.load('images/R4E.png'), pygame.image.load('images/R5E.png'), pygame.image.load('images/R6E.png'), pygame.image.load('images/R7E.png'), pygame.image.load('images/R8E.png'), pygame.image.load('images/R9E.png'), pygame.image.load('images/R10E.png'), pygame.image.load('images/R11E.png')]
+    walkLeft = [pygame.image.load('images/L1E.png'), pygame.image.load('images/L2E.png'), pygame.image.load('images/L3E.png'), pygame.image.load('images/L4E.png'), pygame.image.load('images/L5E.png'), pygame.image.load('images/L6E.png'), pygame.image.load('images/L7E.png'), pygame.image.load('images/L8E.png'), pygame.image.load('images/L9E.png'), pygame.image.load('images/L10E.png'), pygame.image.load('images/L11E.png')]
 
     def __init__(self, x, y, width, height, end):
         self.x = x
@@ -185,12 +185,8 @@ while run :
         text3 = font.render('--Game Over--', 1, (255,0,0))
         win.blit(text3, (250 - (text3.get_width()/2), 200))
         pygame.display.update()
-        redrawGamewindow()
-        i = 0
-        while i < 100:
-            pygame.time.delay(10)
-            i += 1
-        break
+        pygame.time.delay(2000)
+        run = False
 
     if counter == 27:
         Timer -= 1
@@ -267,3 +263,4 @@ while run :
     redrawGamewindow()
     
 pygame.quit()
+
